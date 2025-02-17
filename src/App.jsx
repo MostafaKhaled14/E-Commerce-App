@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home/Home";
 import Layout from "./Components/Layout/Layout";
@@ -22,7 +22,7 @@ import AllOrders from "./Components/AllOrders/AllOrders";
 function App() {
   const queryClient = new QueryClient();
 
-  let routes = createBrowserRouter([
+  let routes = createHashRouter([
     {
       path: "/",
       element: <Layout />,
@@ -36,7 +36,7 @@ function App() {
           ),
         },
         {
-          path: "home",
+          path: "/home",
           element: (
             <ProtectedRoutes>
               <Home />
@@ -44,7 +44,7 @@ function App() {
           ),
         },
         {
-          path: "products",
+          path: "/products",
           element: (
             <ProtectedRoutes>
               <Products />
@@ -52,7 +52,7 @@ function App() {
           ),
         },
         {
-          path: "ProductDetails/:id/:category",
+          path: "/ProductDetails/:id/:category",
           element: (
             <ProtectedRoutes>
               <ProductDetails />
@@ -60,7 +60,7 @@ function App() {
           ),
         },
         {
-          path: "brands",
+          path: "/brands",
           element: (
             <ProtectedRoutes>
               <Brands />
@@ -68,7 +68,7 @@ function App() {
           ),
         },
         {
-          path: "cart",
+          path: "/cart",
           element: (
             <ProtectedRoutes>
               <Cart />
@@ -76,7 +76,7 @@ function App() {
           ),
         },
         {
-          path: "wishlist",
+          path: "/wishlist",
           element: (
             <ProtectedRoutes>
               <WishList />
@@ -84,7 +84,7 @@ function App() {
           ),
         },
         {
-          path: "Payment",
+          path: "/Payment",
           element: (
             <ProtectedRoutes>
               <PaymentPage />
@@ -92,7 +92,7 @@ function App() {
           ),
         },
         {
-          path: "allorders",
+          path: "/allorders",
           element: (
             <ProtectedRoutes>
               <AllOrders />
@@ -100,7 +100,7 @@ function App() {
           ),
         },
         {
-          path: "categories",
+          path: "/categories",
           element: (
             <ProtectedRoutes>
               <Categories />
@@ -108,7 +108,7 @@ function App() {
           ),
         },
         {
-          path: "login",
+          path: "/login",
           element: (
             <ProtectedAuthentication>
               <Login />
@@ -116,7 +116,7 @@ function App() {
           ),
         },
         {
-          path: "register",
+          path: "/register",
           element: (
             <ProtectedAuthentication>
               <Register />
