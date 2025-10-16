@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Cart.module.css";
 import { CartContexst } from "../../Context/CartContext";
 import Loading from "../Loading/Loading";
@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const { removeCartItems, updateCartItems, cartItems, clearCart, totalPrice } = useContext(CartContexst);
   const { isLoading } = useContext(TokenContext);
+
+ 
+  
 
   return (
     <>
@@ -54,9 +57,9 @@ export default function Cart() {
                     className="bg-white border border-green-600 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                   >
                     <td className="p-4">
-                      <img src={item.product.imageCover} className="w-10 md:w-32 max-w-full max-h-full" alt="Apple Watch" />
+                      <img src={item?.product?.imageCover} className="w-10 md:w-32 max-w-full max-h-full" alt="image" />
                     </td>
-                    <td className=" font-semibold text-gray-900 dark:text-white">{item.product.title.split(" ").slice(0, 2).join(" ")}</td>
+                    <td className=" font-semibold text-gray-900 dark:text-white">{item?.product?.title?.split(" ").slice(0, 2).join(" ")}</td>
                     <td className="">
                       <div className="flex items-center">
                         <button

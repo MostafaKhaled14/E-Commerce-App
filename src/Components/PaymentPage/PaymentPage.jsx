@@ -46,7 +46,7 @@ export default function PaymentPage() {
       <div className="container pt-4">
         <form onSubmit={formik.handleSubmit}>
           <div className="container w-2/3 grid *:mb-3">
-            <h2 className="text-2xl text-main">Register Now :</h2>
+            <h2 className="text-2xl text-main">Payment Page :</h2>
             <div>
               <label
                 htmlFor="details"

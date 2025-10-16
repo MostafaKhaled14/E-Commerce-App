@@ -8,14 +8,13 @@ export default function AllOrders() {
         <h2 className="p-8  text-main font-extrabold text-2xl ">
           Payment completed successfully
         </h2>
-        <h2 className="">
-          Click{" "}
+        <h2>
           <Link
             to="/home"
             className="underline text-main cursor-pointer hover:text-[#544] hover:underline text-lg"
           >
             here
-          </Link>{" "}
+          </Link>
           to go to the Home pagey
         </h2>
       </div>

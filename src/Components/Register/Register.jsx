@@ -4,21 +4,20 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { TokenContext } from "../../Context/TokenContext";
 
 export default function Register() {
   const [userMessage, setUserMessage] = useState(null);
-  const { isLoading, setIsLoading } = useContext(TokenContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   let mySchema = Yup.object({
     name: Yup.string()
-      .required("name is required")
+      .required("Name is required")
       .min(3, "Name must be greater than 3 characters")
       .max(20, "Name must be less than 20 characters"),
-    email: Yup.string().required("email is required").email("Invalid email"),
+    email: Yup.string().required("Email is required").email("Invalid email"),
     phone: Yup.string()
-      .required("phone is required")
+      .required("Phone is required")
       .matches(
         /^(002)?01[0125][0-9]{8}$/i,
         "Invalid phone, Enter egyptian number"
@@ -26,7 +25,7 @@ export default function Register() {
     password: Yup.string()
       .required("Password is required")
       .matches(
-        /^[A-Z][a-z0-9]{8,}$/,
+        /^[A-Z][a-z0-9@_-]{7,}/,
         "First letter must be capital, and 8 characters required"
       ),
     rePassword: Yup.string()
@@ -210,20 +209,20 @@ export default function Register() {
             </div>
 
             <div className="flex items-center">
-              {!isLoading ? (
+              {isLoading ? (
+                <button
+                  type="submit"
+                  className=" ms-2 text-white bg-green-500 hover:bg-green-400 font-bold rounded-lg w-fit px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 "
+                >
+                  <i className="fa fa-spinner fa-spin"></i>
+                </button>
+              ) : (
                 <button
                   disabled={!(formik.isValid && formik.dirty)}
                   type="submit"
                   className="text-white bg-green-500 hover:bg-green-400 font-bold rounded-lg w-fit px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 "
                 >
                   Register
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className=" ms-2 text-white bg-green-500 hover:bg-green-400 font-bold rounded-lg w-fit px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 "
-                >
-                  <i className="fa fa-spinner fa-spin"></i>
                 </button>
               )}
 

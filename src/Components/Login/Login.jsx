@@ -14,11 +14,11 @@ export default function Login() {
   const navigate = useNavigate();
 
   let mySchema = Yup.object({
-    email: Yup.string().required("email is required").email("Invalid email"),
+    email: Yup.string().required("Email is required").email("Invalid email"),
     password: Yup.string()
       .required("Password is required")
       .matches(
-        /^[A-Z][a-z0-9]{8,}$/,
+        /^[A-Z][a-z0-9@_-]{7,}/,
         "First letter must be capital, and 8 characters required"
       ),
   });
